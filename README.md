@@ -2,7 +2,7 @@
 
 ## Integrantes del grupo
 - Maximiliano Pais - maximilianopais14@gmail.com
-- Fran - (mail de fan)
+- Frannco Maidana Escabues- francomaidanaescabues@gmail.com 
   
  Descripción 
 La concesionaria necesita una base de datos que permita:
