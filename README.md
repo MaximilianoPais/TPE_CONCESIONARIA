@@ -20,4 +20,4 @@ La concesionaria necesita una base de datos que permita:
 
 ##SQL
 
-[Script SQL](conc
+[Script SQL](concesionario.sql)
