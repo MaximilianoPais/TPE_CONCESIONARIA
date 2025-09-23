@@ -18,6 +18,6 @@ La concesionaria necesita una base de datos que permita:
 
 <img width="768" height="293" alt="image" src="https://github.com/user-attachments/assets/5650655e-eb3e-4347-a503-551dcb339c2c" />
 
-##SQL
+## SQL
 
 [Script SQL](concesionario.sql)
