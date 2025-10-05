@@ -1,8 +1,20 @@
 <?php
-class MotoView {
+class MotoView
+{
 
-    public function mostrarMotos($motos) {
+    public function mostrarMotos($motos, $categorias)
+    {
         echo "<h1>Listado de Motos</h1><ul>";
+        echo "<h2>Categorías</h2><ul>";
+        foreach ($categorias as $c) {
+            echo "<li>
+                <a href='router.php?action=motosCategoria/$c->id_tipo'>$c->nombre</a>
+                </li>";
+        }
+        echo "<li>
+            <a href='router.php?action=listar'>Todas las categorías</a>
+            </li>";
+        echo "</ul>";
         foreach ($motos as $m) {
             echo "<li>
                 <a href='router.php?action=detalle/$m->id_moto'>$m->modelo</a> - $$m->precio - Tipo: $m->tipo
@@ -11,7 +23,8 @@ class MotoView {
         echo "</ul>";
     }
 
-    public function mostrarDetalleMoto($moto) {
+    public function mostrarDetalleMoto($moto)
+    {
         echo "<h1>Detalle de la moto</h1>";
         echo "<p><b>Modelo:</b> $moto->modelo</p>";
         echo "<p><b>Precio:</b> $$moto->precio</p>";

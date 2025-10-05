@@ -14,7 +14,8 @@ class MotoController {
     // (A) Listado de motos
     public function listarMotos() {
         $motos = $this->model->getMotos();
-        $this->view->mostrarMotos($motos);
+        $categorias = $this->model->getCategorias();
+        $this->view->mostrarMotos($motos, $categorias);
     }
 
     // (A) Detalle de moto
@@ -26,6 +27,7 @@ class MotoController {
     // (B) Motos por categoría
     public function listarPorCategoria($id_tipo) {
         $motos = $this->model->getMotosByCategoria($id_tipo);
-        $this->view->mostrarMotos($motos);
+        $categorias = $this->model->getCategorias();
+        $this->view->mostrarMotos($motos, $categorias);
     }
 }

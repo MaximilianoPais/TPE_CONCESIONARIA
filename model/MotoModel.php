@@ -36,4 +36,14 @@ class MotoModel {
         $query->execute([$id_tipo]);
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
+
+    public function getCategorias() {
+        // Supón que tienes una conexión $db y una tabla 'categorias'
+        $query = $this->db->prepare('SELECT * FROM tipo_motos');
+        $query->execute();
+        return $query->fetchAll(PDO::FETCH_OBJ);
+    }
+
+
+    
 }
