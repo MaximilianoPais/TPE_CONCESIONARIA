@@ -1,49 +1,32 @@
 <?php
-require_once './model/db.php'; // archivo de conexión
+require_once './model/MotoModel.php';
+require_once './view/MotoView.php';
 
-class MotoModel {
-    private $db;
+class MotoController {
+    private $model;
+    private $view;
 
     public function __construct() {
-        $this->db = getConnection();
+        $this->model = new MotoModel();
+        $this->view = new MotoView();
     }
 
-    // (A) Listado de todas las motos
-    public function getMotos() {
-        $query = $this->db->prepare("SELECT m.*, t.nombre AS tipo 
-                                     FROM motos m 
-                                     JOIN tipo_motos t ON m.id_tipo = t.id_tipo");
-        $query->execute();
-        return $query->fetchAll(PDO::FETCH_OBJ);
+    // (A) Listado de motos
+    public function listarMotos() {
+        $motos = $this->model->getMotos();
+        $this->view->mostrarMotos($motos);
     }
 
-    // (A) Detalle de una moto
-    public function getMotoById($id) {
-        $query = $this->db->prepare("SELECT m.*, t.nombre AS tipo 
-                                     FROM motos m 
-                                     JOIN tipo_motos t ON m.id_tipo = t.id_tipo
-                                     WHERE id_moto = ?");
-        $query->execute([$id]);
-        return $query->fetch(PDO::FETCH_OBJ);
+    // (A) Detalle de moto
+    public function mostrarDetalle($id) {
+        $moto = $this->model->getMotoById($id);
+        $this->view->mostrarDetalleMoto($moto);
     }
 
-    // (B) Listado de motos por categoría
-    public function getMotosByCategoria($id_tipo) {
-        $query = $this->db->prepare("SELECT m.*, t.nombre AS tipo 
-                                     FROM motos m 
-                                     JOIN tipo_motos t ON m.id_tipo = t.id_tipo
-                                     WHERE m.id_tipo = ?");
-        $query->execute([$id_tipo]);
-        return $query->fetchAll(PDO::FETCH_OBJ);
+    // (B) Motos por categoría
+    public function listarPorCategoria($id_tipo) {
+        $motos = $this->model->getMotosByCategoria($id_tipo);
+        $this->view->mostrarMotos($motos);
     }
-
-    public function getCategorias() {
-        // Supón que tienes una conexión $db y una tabla 'categorias'
-        $query = $this->db->prepare('SELECT * FROM tipo_motos');
-        $query->execute();
-        return $query->fetchAll(PDO::FETCH_OBJ);
-    }
-
-
-    
 }
+
