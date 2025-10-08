@@ -10,19 +10,14 @@ class MotoModel {
 
     // (A) Listado de todas las motos
     public function getMotos() {
-        $query = $this->db->prepare("SELECT m.*, t.nombre AS tipo 
-                                     FROM motos m 
-                                     JOIN tipo_motos t ON m.id_tipo = t.id_tipo");
+        $query = $this->db->prepare("SELECT * FROM motos");
         $query->execute();
         return $query->fetchAll(PDO::FETCH_OBJ);
     }
 
     // (A) Detalle de una moto
     public function getMotoById($id) {
-        $query = $this->db->prepare("SELECT m.*, t.nombre AS tipo 
-                                     FROM motos m 
-                                     JOIN tipo_motos t ON m.id_tipo = t.id_tipo
-                                     WHERE id_moto = ?");
+        $query = $this->db->prepare("SELECT * FROM motos WHERE id_moto = ?");
         $query->execute([$id]);
         return $query->fetch(PDO::FETCH_OBJ);
     }
