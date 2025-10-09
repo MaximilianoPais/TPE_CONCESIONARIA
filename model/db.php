@@ -2,7 +2,7 @@
 
 function getConnection() {
     try {
-        $host = '127.0.0.1';     // o 'localhost'
+        $host = 'localhost';     // o la IP del servidor de base de datos
         $dbname = 'concesionaria';
         $user = 'root';          // tu usuario de MySQL
         $password = '';          // tu contraseña de MySQL (vacía por defecto en XAMPP)
