@@ -17,17 +17,18 @@ class MotoView
         echo "</ul>";
         foreach ($motos as $m) {
             echo "<li>
-                <a href='router.php?action=detalle/$m->id_moto'>$m->modelo</a> - $$m->precio - Tipo: $m->tipo
+                <a href='router.php?action=detalle/$m->id_moto'>$m->modelo</a> - $$m->precio - Tipo: " . $categorias[$m->id_tipo]->nombre ."
                 </li>";
         }
         echo "</ul>";
     }
 
-    public function mostrarDetalleMoto($moto)
+    public function mostrarDetalleMoto($moto, $categorias)
     {
         echo "<h1>Detalle de la moto</h1>";
         echo "<p><b>Modelo:</b> $moto->modelo</p>";
         echo "<p><b>Precio:</b> $$moto->precio</p>";
-        echo "<p><b>Tipo:</b> $moto->tipo</p>";
+        echo "<p><b>Tipo:</b> " . $categorias[$moto->id_tipo]->nombre . "</p>";
     }
 }
+
