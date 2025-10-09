@@ -51,6 +51,8 @@ class MotoController
         foreach ($categorias as $c) {
             $categoriasPorId[$c->id_tipo] = $c;
         }
+
+        
         $this->view->mostrarMotos($motos, $categoriasPorId);
     }
 }
