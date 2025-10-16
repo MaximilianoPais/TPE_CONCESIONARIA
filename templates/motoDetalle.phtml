@@ -1,0 +1,18 @@
+<?php require __DIR__ . '/layout/header.phtml'; ?>
+
+<?php if (empty($moto)): ?>
+    <h2>La moto no existe o fue eliminada.</h2>
+    <a href="<?= BASE_URL ?>">Volver al listado</a>
+    <?php require __DIR__ . '/layout/footer.phtml'; ?>
+    <?php return; ?>
+<?php endif; ?>
+
+<h1><?php echo htmlspecialchars($moto->modelo); ?></h1>
+<p>Precio: <?php echo htmlspecialchars($moto->precio); ?></p>
+<p>Características: <?php echo htmlspecialchars($moto->caracteristicas ?? 'Sin características'); ?></p>
+<p>Categoría: <?php echo htmlspecialchars($moto->tipo_nombre ?? 'Sin categoría'); ?></p>
+
+<?php require __DIR__ . '/layout/footer.phtml'; ?>
+
+
+

@@ -1,0 +1,72 @@
+<?php
+require './templates/layout/header.phtml';
+?>
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4"> Listado de Motos</h1>
+
+    <!-- CATEGORÍAS -->
+    <div class="card shadow-sm mb-5">
+        <div class="card-header bg-dark text-white">
+            <h4 class="mb-0">Categorías</h4>
+        </div>
+        <div class="card-body">
+            <ul class="list-group list-group-horizontal flex-wrap">
+                <?php foreach ($categorias as $c): ?>
+                    <li class="list-group-item border-0">
+                        <a href="<?= BASE_URL ?>motosCategoria/<?= $c->id_tipo ?>" class="btn btn-outline-primary btn-sm">
+                            <?= htmlspecialchars($c->nombre) ?>
+                        </a>
+                    </li>
+                <?php endforeach; ?>
+                <li class="list-group-item border-0">
+                    <a href="<?= BASE_URL ?>listarMotos" class="btn btn-secondary btn-sm">
+                        Todas las categorías
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- LISTADO DE MOTOS -->
+    <div class="row">
+        <?php foreach ($motos as $m): ?>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <?php if (!empty($m->imagen)): ?>
+                        <img src="<?= htmlspecialchars($m->imagen) ?>" class="card-img-top" alt="<?= htmlspecialchars($m->modelo) ?>">
+                    <?php else: ?>
+                        <img src="https://cdn-icons-png.flaticon.com/512/3202/3202926.png" class="card-img-top" alt="Sin imagen">
+                    <?php endif; ?>
+
+                    <div class="card-body">
+                        <h5 class="card-title"><?= htmlspecialchars($m->modelo) ?></h5>
+                        <p class="card-text mb-1">
+                            <strong>Precio:</strong> $<?= number_format($m->precio, 2) ?>
+                        </p>
+                        <?php if (isset($categorias[$m->id_tipo])): ?>
+                            <p class="card-text">
+                                <strong>Tipo:</strong> <?= htmlspecialchars($categorias[$m->id_tipo]->nombre) ?>
+                            </p>
+                        <?php endif; ?>
+
+                        <a href="<?= BASE_URL ?>detalle/<?= $m->id_moto ?>" class="btn btn-outline-dark btn-sm">
+                            Ver detalle
+                        </a>
+
+                        <?php if (isset($_SESSION['IS_ADMIN']) && $_SESSION['IS_ADMIN'] == 1): ?>
+                            <div class="mt-3">
+                                <a href="<?= BASE_URL ?>formEditarMoto/<?= $m->id_moto ?>" class="btn btn-warning btn-sm">Editar</a>
+                                <a href="<?= BASE_URL ?>eliminarMoto/<?= $m->id_moto ?>"
+                                   onclick="return confirm('¿Estás seguro de eliminar esta moto?')"
+                                   class="btn btn-danger btn-sm">Eliminar</a>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    </div>
+</div>
+
+<?php require './templates/layout/footer.phtml'; ?>

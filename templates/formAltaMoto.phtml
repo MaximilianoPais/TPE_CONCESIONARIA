@@ -1,0 +1,31 @@
+
+<?php require './templates/layout/header.phtml' ?>
+
+<div class="container mt-5">
+    <h2>Agregar nueva moto</h2>
+    <form action="router.php?action=agregarMoto" method="POST">
+        <div class="mb-3">
+            <label>Modelo</label>
+            <input type="text" name="modelo" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label>Precio</label>
+            <input type="number" name="precio" class="form-control" step="0.01" required>
+        </div>
+        <div class="mb-3">
+            <label>Categoría</label>
+            <select name="id_tipo" class="form-select" required>
+                <?php foreach ($categorias as $c): ?>
+                    <option value="<?= $c->id_tipo ?>"><?= $c->nombre ?></option>
+                <?php endforeach; ?>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label>Imagen (URL opcional)</label>
+            <input type="text" name="imagen" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+    </form>
+</div>
+
+<?php require './templates/layout/footer.phtml' ?>
