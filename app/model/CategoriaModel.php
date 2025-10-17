@@ -10,7 +10,7 @@ class CategoriaModel {
 
     // (B) Listado de todas las categorías
     public function getCategorias() {
-        $query = $this->db->prepare("SELECT * FROM tipo_motos");
+        $query = $this->db->prepare("SELECT * FROM categorias");
         $query->execute();
         return $query->fetchAll(PDO::FETCH_OBJ);
     }

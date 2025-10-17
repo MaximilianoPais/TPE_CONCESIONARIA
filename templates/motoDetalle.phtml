@@ -1,18 +1,39 @@
 <?php require __DIR__ . '/layout/header.phtml'; ?>
 
-<?php if (empty($moto)): ?>
-    <h2>La moto no existe o fue eliminada.</h2>
-    <a href="<?= BASE_URL ?>">Volver al listado</a>
-    <?php require __DIR__ . '/layout/footer.phtml'; ?>
-    <?php return; ?>
-<?php endif; ?>
+<div class="container my-5">
+    <?php if (empty($moto)): ?>
+        <div class="alert alert-warning text-center shadow-sm p-4 rounded">
+            <h2 class="mb-3">La moto no existe o fue eliminada.</h2>
+            <a href="<?= BASE_URL ?>" class="btn btn-outline-primary">
+                Volver al listado
+            </a>
+        </div>
+    <?php else: ?>
+        <div class="card mx-auto shadow-sm" style="max-width: 700px;">
+            <div class="card-header bg-primary text-white text-center">
+                <?php if (!empty($moto->imagen)): ?>
+                    <div class="text-center p-3">
+                        <img src="<?= htmlspecialchars($moto->imagen) ?>" alt="<?= htmlspecialchars($moto->modelo) ?>"
+                            class="img-fluid rounded shadow-sm" style="max-height: 250px; width: auto; object-fit: cover;">
+                    </div>
+                <?php endif; ?>
 
-<h1><?php echo htmlspecialchars($moto->modelo); ?></h1>
-<p>Precio: <?php echo htmlspecialchars($moto->precio); ?></p>
-<p>Características: <?php echo htmlspecialchars($moto->caracteristicas ?? 'Sin características'); ?></p>
-<p>Categoría: <?php echo htmlspecialchars($moto->tipo_nombre ?? 'Sin categoría'); ?></p>
+                <h2 class="mb-0"><?= htmlspecialchars($moto->modelo) ?></h2>
+            </div>
+            <div class="card-body">
+                <p><strong>Precio:</strong>
+                    <span class="text-success">$<?= number_format($moto->precio, 2, ',', '.') ?></span>
+                </p>
+                <p><strong>Características:</strong><br>
+                    <?= htmlspecialchars($moto->caracteristicas ?? 'Sin características') ?>
+                </p>
+                <p><strong>Categoría:</strong> <?= htmlspecialchars($moto->tipo_nombre ?? 'Sin categoría') ?></p>
+            </div>
+            <div class="card-footer text-center">
+                <a href="<?= BASE_URL ?>" class="btn btn-secondary">Volver al listado</a>
+            </div>
+        </div>
+    <?php endif; ?>
+</div>
 
 <?php require __DIR__ . '/layout/footer.phtml'; ?>
-
-
-

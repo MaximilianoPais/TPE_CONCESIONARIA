@@ -73,13 +73,14 @@ class MotoController
         $modelo = $_POST['modelo'];
         $precio = $_POST['precio'];
         $id_tipo = $_POST['id_tipo'];
+        $caracteristicas = $_POST['caracteristicas'];
         $imagen = $_POST['imagen'] ?? null;
         // VALIDAR QUE VENGAN TODOS LOS DATOS Y QUE EL PRECIO SEA NUMERICO
-        if (empty($modelo) || empty($precio) || empty($id_tipo) || empty($imagen)) {
+        if (empty($modelo) || empty($precio) || empty($id_tipo) || empty($caracteristicas) || empty($imagen)) {
             $this->error('ERROR');
             return;
         }
-        $this->model->insertMoto($modelo, $precio, $id_tipo, $imagen);
+        $this->model->insertMoto($modelo, $precio, $id_tipo, $caracteristicas, $imagen);
         header("Location: " . BASE_URL . "");
     }
 
@@ -107,10 +108,11 @@ class MotoController
         $modelo = $_POST['modelo'];
         $precio = $_POST['precio'];
         $id_tipo = $_POST['id_tipo'];
+        $caracteristicas = $_POST['caracteristicas'];
         $imagen = $_POST['imagen'] ?? null;
 
-        $this->model->updateMoto($id, $modelo, $precio, $id_tipo, $imagen);
-        header("Location: " . BASE_URL . "listar");
+        $this->model->updateMoto($id, $modelo, $precio, $id_tipo, $caracteristicas, $imagen);
+        header("Location: " . BASE_URL . "");
     }
     private function error($msg)
     {

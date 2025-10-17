@@ -1,4 +1,3 @@
-
 <?php require './templates/layout/header.phtml' ?>
 
 <div class="container mt-5">
@@ -13,10 +12,14 @@
             <input type="number" name="precio" class="form-control" step="0.01" required>
         </div>
         <div class="mb-3">
+            <label>Caracteristicas</label>
+            <input type="text" name="caracteristicas" class="form-control" required>
+        </div>
+        <div class="mb-3">
             <label>Categoría</label>
             <select name="id_tipo" class="form-select" required>
                 <?php foreach ($categorias as $c): ?>
-                    <option value="<?= $c->id_tipo ?>"><?= $c->nombre ?></option>
+                    <option value="<?= $c->id_tipo ?>"><?= $c->tipo_nombre ?></option>
                 <?php endforeach; ?>
             </select>
         </div>

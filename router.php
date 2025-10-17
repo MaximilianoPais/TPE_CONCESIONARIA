@@ -74,7 +74,7 @@ switch ($params[0]) {
 
     // ------------------------- Categorías -------------------------
     case 'categorias':
-        $categoriaController->listarCategorias();
+        $categoriaController->listarCategorias($request);
         break;
 
     // ------------------------- Autenticación -------------------------
