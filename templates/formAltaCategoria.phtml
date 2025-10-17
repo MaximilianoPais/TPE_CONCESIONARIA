@@ -1,0 +1,14 @@
+<?php require './templates/layout/header.phtml' ?>
+
+<div class="container mt-5">
+    <h2>Agregar nueva categoría</h2>
+    <form action="router.php?action=agregarCategoria" method="POST">
+        <div class="mb-3">
+            <label for="tipo_nombre" class="form-label">Nombre de la categoría</label>
+            <input type="text" name="tipo_nombre" id="tipo_nombre" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-success">Guardar categoría</button>
+    </form>
+</div>
+
+<?php require './templates/layout/footer.phtml' ?>

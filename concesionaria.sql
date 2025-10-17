@@ -88,7 +88,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `usuario`, `contraseña`, `admin`) VALUES
-(2, 'webAdm', '$2y$10$PyOuk5I0rEJaOjSdk.TnHubDSR.Kr3AycdNVmsk.tjE71aXiFMEwC', 1);
+(2, 'webAdmin', '$2y$10$PyOuk5I0rEJaOjSdk.TnHubDSR.Kr3AycdNVmsk.tjE71aXiFMEwC', 1);
 
 --
 -- Índices para tablas volcadas

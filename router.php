@@ -72,6 +72,31 @@ switch ($params[0]) {
         $motoController->eliminarMoto($params[1]);
         break;
 
+    case 'formAltaCategoria':
+        $request = (new GuardMiddleware())->run($request);
+        $categoriaController->mostrarFormAlta();
+        break;
+
+    case 'agregarCategoria':
+        $request = (new GuardMiddleware())->run($request);
+        $categoriaController->agregarCategoria();
+        break;
+
+    case 'formEditarCategoria':
+        $request = (new GuardMiddleware())->run($request);
+        $categoriaController->mostrarFormEditar($params[1]);
+        break;
+
+    case 'editarCategoria':
+        $request = (new GuardMiddleware())->run($request);
+        $categoriaController->editarCategoria($params[1]);
+        break;
+
+    case 'eliminarCategoria':
+        $request = (new GuardMiddleware())->run($request);
+        $categoriaController->eliminarCategoria($params[1]);
+        break;
+
     // ------------------------- Categorías -------------------------
     case 'categorias':
         $categoriaController->listarCategorias($request);

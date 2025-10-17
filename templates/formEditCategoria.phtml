@@ -1,0 +1,15 @@
+<?php require './templates/layout/header.phtml' ?>
+
+<div class="container mt-5">
+    <h2>Editar categoría</h2>
+    <form action="router.php?action=editarCategoria/<?= $categoria->id_tipo ?>" method="POST">
+        <div class="mb-3">
+            <label for="tipo_nombre" class="form-label">Nombre de la categoría</label>
+            <input type="text" name="tipo_nombre" id="tipo_nombre" value="<?= $categoria->tipo_nombre ?>" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-success">Actualizar</button>
+        <a href="<?= BASE_URL ?>categorias" class="btn btn-secondary ms-2">Cancelar</a>
+    </form>
+</div>
+
+<?php require './templates/layout/footer.phtml' ?>

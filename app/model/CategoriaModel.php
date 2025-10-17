@@ -16,8 +16,25 @@ class CategoriaModel {
     }
 
     public function getCategoriaById($id) {
-        $query = $this->db->prepare("SELECT * FROM tipo_motos WHERE id_tipo = ?");
+        $query = $this->db->prepare("SELECT * FROM categorias WHERE id_tipo = ?");
         $query->execute([$id]);
         return $query->fetch(PDO::FETCH_OBJ);
     }
+
+    public function insertCategoria($tipo_nombre) {
+        $query = $this->db->prepare("INSERT INTO categorias (tipo_nombre) VALUES (?)");
+        $query->execute([$tipo_nombre]);
+    }
+
+    public function deleteCategoria($id) {
+        $query = $this->db->prepare("DELETE FROM categorias WHERE id_tipo = ?");
+         $query->execute([$id]);
+    }
+
+    public function updateCategoria($id, $tipo_nombre) {
+        $query = $this->db->prepare("UPDATE categorias SET tipo_nombre = ? WHERE id_tipo = ?");
+        $query->execute([$tipo_nombre, $id]);
+    }
+
+
 }
