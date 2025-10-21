@@ -36,5 +36,11 @@ class CategoriaModel {
         $query->execute([$tipo_nombre, $id]);
     }
 
+    public function tieneMotos($id_tipo) {
+        $query = $this->db->prepare("SELECT COUNT(*) as count FROM motos WHERE id_tipo = ?");
+        $query->execute([$id_tipo]);
+        $result = $query->fetch(PDO::FETCH_OBJ);
+        return $result->count > 0;
+    }
 
 }

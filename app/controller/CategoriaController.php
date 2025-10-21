@@ -23,11 +23,10 @@ class CategoriaController
 
     public function agregarCategoria()
     {
-
         $tipo_nombre = $_POST['tipo_nombre'];
         // VALIDAR QUE VENGAN TODOS LOS DATOS
         if (empty($tipo_nombre)) {
-            $this->error('ERROR');
+            $this->view->error('ERROR');
             return;
         }
         $this->model->insertCategoria($tipo_nombre);
@@ -39,21 +38,17 @@ class CategoriaController
     public function mostrarFormAlta()
     {
         $this->view->mostrarFormAlta();
-
     }
 
 
     public function eliminarCategoria($id)
-    {
-        session_start();
-        if (!isset($_SESSION['USER_ID'])) {
-            header("Location: " . BASE_URL . "login");
-            die();
+    {//  si hay motos con esa categoria, no dejar eliminar
+        if ($this->model->tieneMotos($id)) {
+            $this->view->error('No se puede eliminar la categoría porque tiene motos asociadas.');
+            return;
         }
-
         $this->model->deleteCategoria($id);
         header("Location: " . BASE_URL . "");
-
     }
 
 
@@ -68,7 +63,7 @@ class CategoriaController
         $tipo_nombre = $_POST['tipo_nombre'];
         // VALIDAR QUE VENGAN TODOS LOS DATOS
         if (empty($tipo_nombre)) {
-            $this->error('ERROR');
+            $this->view->error('ERROR');
             return;
         }
         $this->model->updateCategoria($id, $tipo_nombre);
@@ -76,10 +71,7 @@ class CategoriaController
     }
 
 
-    private function error($msg)
-    {
-        echo "<h2>$msg</h2><a href='" . BASE_URL . "listar'>Volver</a>";
-    }
+
 
 
 }

@@ -2,10 +2,10 @@
 
 function getConnection() {
     try {
-        $host = 'localhost';     // o la IP del servidor de base de datos
+        $host = 'localhost';     
         $dbname = 'concesionaria';
-        $user = 'root';          // tu usuario de MySQL
-        $password = '';          // tu contraseña de MySQL (vacía por defecto en XAMPP)
+        $user = 'root';          
+        $password = '';
 
         $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $password);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
