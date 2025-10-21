@@ -20,6 +20,10 @@ class MotoView
     {
         require './templates/formEditMoto.phtml';
     }
+    public function mostrarConfirmacionBorrado($moto) {
+    require './templates/confirmarBorrado.phtml';
+}
+
 }
 
 

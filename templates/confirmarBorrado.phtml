@@ -1,0 +1,21 @@
+<?php require './templates/layout/header.phtml'; ?>
+
+<div class="container text-center my-5">
+    <div class="card mx-auto shadow-sm" style="max-width: 500px;">
+        <div class="card-body">
+            <h3 class="mb-3 text-danger">Confirmar eliminación</h3>
+            <p>¿Estás seguro de que querés eliminar la moto 
+                <strong><?= htmlspecialchars($moto->modelo) ?></strong>?
+            </p>
+
+            <div class="d-flex justify-content-center gap-3 mt-4">
+                <a href="<?= BASE_URL ?>eliminarMoto/<?= $moto->id_moto ?>" 
+                   class="btn btn-danger">Sí, eliminar</a>
+                <a href="<?= BASE_URL ?>" 
+                   class="btn btn-secondary">Cancelar</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php require './templates/layout/footer.phtml'; ?>

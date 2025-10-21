@@ -53,18 +53,5 @@ class AuthController
         exit();
     }
 
-    // metodo para crear hashes xd
-    public function generarHash($texto)
-    {
-        $hash = password_hash($texto, PASSWORD_BCRYPT);
-        echo "Hash generado para '$texto':<br><br><code>$hash</code>";
-    }
-    // USAR Y BORRRAR!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-    public function generarPassword($texto)
-    {
-        $password = password_hash($texto, PASSWORD_BCRYPT);
-        echo "Password generado para '$texto':<br><br><code>$password</code>";
-    }
 }
 

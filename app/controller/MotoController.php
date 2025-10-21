@@ -84,9 +84,16 @@ class MotoController
         header("Location: " . BASE_URL . "");
     }
 
+    public function confirmarBorrado($id_moto)
+    {
+        $moto = $this->model->getMotoById($id_moto);
+        $this->view->mostrarConfirmacionBorrado($moto);
+    }
+
+
     public function eliminarMoto($id)
     {
-        session_start();
+
         if (!isset($_SESSION['USER_ID'])) {
             header("Location: " . BASE_URL . "login");
             die();

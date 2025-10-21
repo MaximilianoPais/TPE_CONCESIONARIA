@@ -13,8 +13,10 @@ $action = $_GET['action'] ?? 'listarMotos';
 $params = explode('/', $action);
 
 // la pagina principal es listar motos
-if (isset($params[0]) && $params[0]
-    === '') {
+if (
+    isset($params[0]) && $params[0]
+    === ''
+) {
     $params[0] = 'listarMotos';
 }
 
@@ -28,11 +30,11 @@ $categoriaController = new CategoriaController();
 $authController = new AuthController();
 
 switch ($params[0]) {
-    
+
     // ------------------------- Motos -------------------------
     case 'listarMotos':
-    $motoController->listarMotos($request);
-    break;
+        $motoController->listarMotos($request);
+        break;
 
 
     case 'detalle':
@@ -67,15 +69,23 @@ switch ($params[0]) {
         $motoController->editarMoto($params[1]);
         break;
 
+    case 'confirmarBorrado':
+        $id = $params[1];
+        $controller = new MotoController();
+        $controller->confirmarBorrado($id);
+        break;
+
     case 'eliminarMoto':
-        $request = (new GuardMiddleware())->run($request);
-        $motoController->eliminarMoto($params[1]);
+        $id = $params[1];
+        $controller = new MotoController();
+        $controller->eliminarMoto($id);
         break;
 
     case 'formAltaCategoria':
         $request = (new GuardMiddleware())->run($request);
         $categoriaController->mostrarFormAlta();
         break;
+    // ------------------------- Categorías -------------------------
 
     case 'agregarCategoria':
         $request = (new GuardMiddleware())->run($request);
@@ -97,7 +107,6 @@ switch ($params[0]) {
         $categoriaController->eliminarCategoria($params[1]);
         break;
 
-    // ------------------------- Categorías -------------------------
     case 'categorias':
         $categoriaController->listarCategorias($request);
         break;
@@ -114,10 +123,4 @@ switch ($params[0]) {
         $request = (new GuardMiddleware())->run($request);
         $authController->logout($request);
         break;
-    //  --------!!!!!!!!!!!!!! USAR Y BORRRAR !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    case 'hash':
-    (new AuthController())->generarHash($params[1]);
-    break;
-
-
 }
