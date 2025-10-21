@@ -10,6 +10,13 @@ require './templates/layout/header.phtml';
             <div class="col-md-4 mb-4">
                 <div class="card h-100 shadow-sm">
                     <div class="card-body">
+                        <?php if (!empty($c->imagen)): ?>
+                            <img src="<?= htmlspecialchars($c->imagen) ?>" class="card-img-top"
+                                alt="<?= htmlspecialchars($c->tipo_nombre) ?>">
+                        <?php else: ?>
+                            <img src="https://cdn-icons-png.flaticon.com/512/3202/3202926.png" class="card-img-top"
+                                alt="Sin imagen">
+                        <?php endif; ?>
                         <h5 class="card-title"><?= htmlspecialchars($c->tipo_nombre) ?></h5>
                         <a href="<?= BASE_URL ?>motosCategoria/<?= $c->id_tipo ?>" class="btn btn-outline-dark btn-sm">
                             Ver motos
@@ -17,31 +24,32 @@ require './templates/layout/header.phtml';
                     </div>
                     <?php if (isset($_SESSION['ADMIN']) && $_SESSION['ADMIN'] === 1): ?>
                         <div class="d-grid gap-2 mt-3">
-                            <a href="<?= BASE_URL ?>formEditarCategoria/<?= $c->id_tipo ?>" class="btn btn-warning btn-sm">Editar</a>
+                            <a href="<?= BASE_URL ?>formEditarCategoria/<?= $c->id_tipo ?>"
+                                class="btn btn-warning btn-sm">Editar</a>
                             <a href="<?= BASE_URL ?>eliminarCategoria/<?= $c->id_tipo ?>"
-                            onclick="return confirm('¿Estás seguro de eliminar esta categoría?')"
-                            class="btn btn-danger btn-sm">Eliminar</a>
+                                onclick="return confirm('¿Estás seguro de eliminar esta categoría?')"
+                                class="btn btn-danger btn-sm">Eliminar</a>
                         </div>
                     <?php endif; ?>
                 </div>
-                
+
             </div>
         <?php endforeach; ?>
         <?php if (isset($_SESSION['ADMIN']) && $_SESSION['ADMIN'] === 1): ?>
-        <div class="col-md-4 mb-4">
-            <div class="card h-100 d-flex align-items-center justify-content-center border-dashed shadow-sm text-center"
-                 style="border: 2px dashed #6f42c1; background-color: #fafafa;">
-                <div class="card-body">
-                    <i class="bi bi-plus-circle display-1 text-primary"></i>
-                    <h5 class="card-title mt-3">Añadir nueva Categoria</h5>
-                    <p class="text-muted mb-3">Agregá una nueva categoría al catálogo</p>
-                    <a href="<?= BASE_URL ?>formAltaCategoria" class="btn btn-primary">
-                        Agregar categoría
-                    </a>
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 d-flex align-items-center justify-content-center border-dashed shadow-sm text-center"
+                    style="border: 2px dashed #6f42c1; background-color: #fafafa;">
+                    <div class="card-body">
+                        <i class="bi bi-plus-circle display-1 text-primary"></i>
+                        <h5 class="card-title mt-3">Añadir nueva Categoria</h5>
+                        <p class="text-muted mb-3">Agregá una nueva categoría al catálogo</p>
+                        <a href="<?= BASE_URL ?>formAltaCategoria" class="btn btn-primary">
+                            Agregar categoría
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
-    <?php endif; ?>
+        <?php endif; ?>
     </div>
 </div>
 

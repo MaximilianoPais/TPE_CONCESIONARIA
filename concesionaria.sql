@@ -29,18 +29,19 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `categorias` (
   `id_tipo` int(11) NOT NULL,
-  `tipo_nombre` varchar(50) NOT NULL
+  `tipo_nombre` varchar(50) NOT NULL,
+  `imagen` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `categorias`
 --
 
-INSERT INTO `categorias` (`id_tipo`, `tipo_nombre`) VALUES
-(1, 'Enduro'),
-(2, 'Calle'),
-(3, 'Naked'),
-(4, 'Deportiva');
+INSERT INTO `categorias` (`id_tipo`, `tipo_nombre`, `imagen`) VALUES
+(1, 'Enduro','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9Do4iNgT5kb-Y7zC3KKNWy-X1ut8G0MHMiA&s'),
+(2, 'Calle','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBi96iKamNQfQsQlNhGZCtXTUChqtXEDF7ow&s'),
+(3, 'Naked','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzxOzvRbRZxBxdknqmbNkS7e3Z47m4iBMwoA&s'),
+(4, 'Deportiva','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSp7I1OPaVZsLhiqm1dtLN77G5A68mlQUNa_A&s');
 
 -- --------------------------------------------------------
 

@@ -2,22 +2,26 @@
 require_once './app/model/AuthModel.php';
 require_once './app/view/AuthView.php';
 
-class AuthController {
+class AuthController
+{
     private $model;
     private $view;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->model = new AuthModel();
         $this->view = new AuthView();
     }
 
     // Mostrar formulario de login
-    public function showLoginForm($request) {
+    public function showLoginForm($request)
+    {
         $this->view->mostrarLogin("", $request->user);
     }
 
     // Procesar login
-    public function login($request) {
+    public function login($request)
+    {
         if (empty($_POST['usuario']) || empty($_POST['password'])) {
             return $this->view->mostrarLogin("", $request->user);
 
@@ -42,7 +46,8 @@ class AuthController {
     }
 
     // Cerrar sesión
-    public function logout($request) {
+    public function logout($request)
+    {
         session_destroy();
         header("Location: " . BASE_URL . "login");
         exit();
@@ -50,16 +55,16 @@ class AuthController {
 
     // metodo para crear hashes xd
     public function generarHash($texto)
-{
-    $hash = password_hash($texto, PASSWORD_BCRYPT);
-    echo "Hash generado para '$texto':<br><br><code>$hash</code>";
-}
+    {
+        $hash = password_hash($texto, PASSWORD_BCRYPT);
+        echo "Hash generado para '$texto':<br><br><code>$hash</code>";
+    }
     // USAR Y BORRRAR!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-public function generarPassword($texto)
-{
-    $password = password_hash($texto, PASSWORD_BCRYPT);
-    echo "Password generado para '$texto':<br><br><code>$password</code>";
-}
+    public function generarPassword($texto)
+    {
+        $password = password_hash($texto, PASSWORD_BCRYPT);
+        echo "Password generado para '$texto':<br><br><code>$password</code>";
+    }
 }
 

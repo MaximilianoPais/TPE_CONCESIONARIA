@@ -21,9 +21,9 @@ class CategoriaModel {
         return $query->fetch(PDO::FETCH_OBJ);
     }
 
-    public function insertCategoria($tipo_nombre) {
-        $query = $this->db->prepare("INSERT INTO categorias (tipo_nombre) VALUES (?)");
-        $query->execute([$tipo_nombre]);
+    public function insertCategoria($tipo_nombre, $imagen) {
+        $query = $this->db->prepare("INSERT INTO categorias (tipo_nombre, imagen) VALUES (?, ?)");
+        $query->execute([$tipo_nombre, $imagen]);
     }
 
     public function deleteCategoria($id) {
@@ -31,9 +31,9 @@ class CategoriaModel {
          $query->execute([$id]);
     }
 
-    public function updateCategoria($id, $tipo_nombre) {
-        $query = $this->db->prepare("UPDATE categorias SET tipo_nombre = ? WHERE id_tipo = ?");
-        $query->execute([$tipo_nombre, $id]);
+    public function updateCategoria($id, $tipo_nombre, $imagen) {
+        $query = $this->db->prepare("UPDATE categorias SET tipo_nombre = ?, imagen = ? WHERE id_tipo = ?");
+        $query->execute([$tipo_nombre, $imagen, $id]);
     }
 
 

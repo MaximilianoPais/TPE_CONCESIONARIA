@@ -25,12 +25,13 @@ class CategoriaController
     {
 
         $tipo_nombre = $_POST['tipo_nombre'];
+        $imagen = $_POST['imagen'] ?? null;
         // VALIDAR QUE VENGAN TODOS LOS DATOS
-        if (empty($tipo_nombre)) {
+        if (empty($tipo_nombre)|| empty($imagen)) {
             $this->error('ERROR');
             return;
         }
-        $this->model->insertCategoria($tipo_nombre);
+        $this->model->insertCategoria($tipo_nombre, $imagen);
         header("Location: " . BASE_URL . "categorias");
     }
 
@@ -66,12 +67,13 @@ class CategoriaController
     public function editarCategoria($id)
     {
         $tipo_nombre = $_POST['tipo_nombre'];
+        $imagen = $_POST['imagen'] ?? null;
         // VALIDAR QUE VENGAN TODOS LOS DATOS
         if (empty($tipo_nombre)) {
             $this->error('ERROR');
             return;
         }
-        $this->model->updateCategoria($id, $tipo_nombre);
+        $this->model->updateCategoria($id, $tipo_nombre,$imagen);
         header("Location: " . BASE_URL . "categorias");
     }
 
